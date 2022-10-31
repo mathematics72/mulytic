@@ -1,0 +1,290 @@
+#include "TXLib.h"
+
+void drawSky()
+{
+    txSetColor(RGB (0, 128, 255));            //'небо'
+    txSetFillColor (RGB (0, 128, 255));
+
+    txRectangle (1, 435, 1152, 0);
+}
+
+void NootNoot()
+{
+    txSetColor(RGB (65, 186, 35));               //'земля'
+    txSetFillColor (RGB (65, 186, 35));
+
+    txRectangle (0, 430, 1150, 640);
+
+}
+
+void drawSun(int x)
+{
+    txSetColor (TX_YELLOW);
+    txSetFillColor (TX_YELLOW);
+
+    txCircle(x, 75, 60);      //'солнце'
+}
+
+void HomeSweetHome(int x, int y)
+{
+    txSetColor (TX_BROWN );              //'дом'
+    txSetFillColor (TX_GRAY);
+    txRectangle (300, 165, 705, 440);
+
+    txSetFillColor (RGB (128, 128, 0));
+    POINT krysha[3] = {{300, 165}, {515, 20}, {705, 165}};
+    txPolygon (krysha, 3);
+
+    txSetColor (RGB (0, 128, 255));
+    txSetFillColor (RGB (0, 128, 255));
+    txRectangle (450, 255, 560, 350);
+
+    txSetColor(TX_BLACK);
+    txSetFillColor (TX_BLACK);
+    txRectangle(330, 210, 415, 430);
+
+    txSetColor(RGB (128, 128, 0));
+    txSetFillColor (RGB (128, 128, 0));
+    //x= 330 y= 430
+    POINT doors[4] = {{330, 210}, {x, y}, {x, y+430-210}, {330, 430}};
+    txPolygon (doors, 4);
+
+    txSetColor(TX_BLACK, 5);
+    txLine(505, 350, 505, 255);
+
+}
+void creature(int x,int y)
+{
+//x=940 y=190
+    txSetColor (TX_WHITE, 4);          //'дом'
+    txSetFillColor (TX_WHITE);
+
+    txCircle(x, y, 50);
+    txLine(x-90, y+435-190, x, y+355-190);
+    txLine(x+75, y+435-190, x, y+355-190);
+    txLine(x-5,  y+350-190, x+5, y+240-190);
+    txLine(x-75, y+310-190, x-5, y+250-190);
+    txLine(x+70, y+310-190, x+5, y+255-190);
+
+}
+void oblacko(int x)
+{
+//x=895
+    txSetColor (TX_LIGHTBLUE);
+    txSetFillColor (TX_LIGHTBLUE);
+
+    txEllipse (x+645-895, 25, x+915-895, 85);
+    txEllipse (x+880-895, 30, x+1110-895, 85);
+    txCircle(x, 55, 50);
+}
+void TreeSta()
+{
+txSetColor (TX_BROWN);
+txSetFillColor (TX_BROWN);
+txRectangle(1068, 236, 1114, 430);
+txSetColor (TX_GREEN);
+txSetFillColor (TX_GREEN);
+POINT igolka[3] = {{1030, 305},{1090, 180},{1150, 305}};
+txPolygon(igolka, 3);
+POINT igolki[3] = {{1030, 235},{1090, 130},{1150, 235}};
+txPolygon(igolki, 3);
+}
+void x4stena()
+{
+txSetColor(RGB(191, 22, 38));
+txSetFillColor(RGB(191, 122, 38));
+txRectangle(1152, 475, 0, 0);
+txSetColor(RGB(220, 164, 69));
+txSetFillColor(RGB(220, 164, 69));
+txRectangle(0, 475, 1152, 640);
+}
+void tumba()
+{
+txSetColor(TX_BLACK);
+txSetFillColor(TX_BLACK);
+txRectangle(265, 285, 490, 430);
+txSetColor(TX_BLACK);
+txSetFillColor(TX_BLACK);
+txRectangle(455, 430, 475, 475);
+txSetColor(TX_BLACK);
+txSetFillColor(TX_BLACK);
+txRectangle(270, 430, 290, 475);
+txSetColor(TX_WHITE);
+txSetFillColor(TX_WHITE);
+txCircle(380, 320, 2);
+txCircle(380, 370, 2);
+txLine(263, 335, 488, 335);
+txLine(263, 384, 488, 384);
+
+}
+void dverrr()
+{
+txSetColor(RGB(135, 78, 50));
+txSetFillColor(RGB(135, 78, 50));
+txRectangle(50, 210, 175, 475);
+txSetColor(TX_BLACK);
+txSetFillColor(TX_BLACK);
+txCircle(150, 375, 2);
+}
+void meshok()
+{
+txSetColor(TX_BLUE);
+txSetFillColor(TX_BLUE);
+txCircle(390, 260, 15);
+POINT daladnosvesda[6] = {{383,238}, {383,244}, {387,246}, {392,244}, {391,238}, {388,235}};
+txPolygon(daladnosvesda,6);
+}
+void microchelik()
+{
+//x = 113
+txCircle(x,340,13);
+txLine(78, 433, 114, 397);
+txLine(153, 433, 114, 397);
+txLine(88, 382, 114, 360);
+txLine(1, 433, 114, 360);
+txLine(78, 433, 114, 397);
+int main()
+{
+    txCreateWindow (1150, 640);
+
+    int xSun = 90;
+    int xMan = 940;
+    int xObl = 895;
+    int xDoors = 415;
+    int yDoors = 210;
+
+
+
+    while(xSun < 1250)
+    {
+        txBegin();
+        drawSky();
+        NootNoot();
+        drawSun(xSun);
+        HomeSweetHome(xDoors,yDoors);
+        oblacko(xObl);
+        TreeSta();
+        creature(xMan,190);
+
+
+        xSun = xSun + 10;
+
+        txSleep(1);
+        txEnd();
+    }
+    while(xObl > 250)
+    {
+        txBegin();
+        drawSky();
+        NootNoot();
+        drawSun(xSun);
+        HomeSweetHome(xDoors,yDoors);
+        oblacko(xObl);
+        TreeSta();
+        creature(xMan,190);
+
+
+        xObl = xObl - 10;
+
+        txSleep(1);
+        txEnd();
+    }
+    while(xMan > 325)
+    {
+        txBegin();
+        drawSky();
+        NootNoot();
+        drawSun(xSun);
+        HomeSweetHome(xDoors,yDoors);
+        oblacko(xObl);
+        TreeSta();
+        creature(xMan,190);
+
+        xMan = xMan - 10;
+
+
+        txSleep(1);
+        txEnd();
+    }
+
+
+    while(xDoors > 335)
+    {
+        txBegin();
+        drawSky();
+        NootNoot();
+        drawSun(xSun);
+        HomeSweetHome(xDoors, yDoors);
+        oblacko(xObl);
+        TreeSta();
+        creature(xMan,190);
+
+
+        xDoors = xDoors - 1;
+        yDoors = yDoors + 1;
+
+        txSleep(1);
+        txEnd();
+    }
+
+    while(xDoors < 415)
+    {
+        txBegin();
+        drawSky();
+        NootNoot();
+        drawSun(xSun);
+        HomeSweetHome(xDoors, yDoors);
+        oblacko(xObl);
+        TreeSta();
+
+
+
+        xDoors = xDoors + 1;
+        yDoors = yDoors - 1;
+
+        txSleep(1);
+        txEnd();
+
+    }
+
+
+    xMan = 115;
+    while(xMan < 400)
+    {
+    txBegin();
+    x4stena();
+    tumba();
+    dverrr();
+    creature(xMan,260);
+    meshok();
+
+    xMan = xMan + 10;
+
+    txSleep(1);
+    txEnd();
+    }
+
+    while(xMan > 115)
+    {
+    txBegin();
+    x4stena();
+    tumba();
+    dverrr();
+    creature(xMan,260);
+
+    xMan = xMan - 10;
+
+    txSleep(1);
+    txEnd();
+    }
+    /*
+    x4stena();
+    tumba();
+    dverrr();
+    creature(115,260);
+    meshok();
+    */
+
+
+return 0;
+}
